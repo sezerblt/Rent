@@ -1,12 +1,15 @@
 package com.company.rental;
 
+import com.company.pojo.Car;
 import com.company.service.RentalService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Main {
 
@@ -18,7 +21,7 @@ public class Main {
         Car car1 = new Car("fiesta");
         Date begin=Main.getDateBegin();
         Date end=Main.getDateEnd();
-        Rental rental=rentalService.rentACar("Ali Aydin",carlist,begin,end);
+        Rental rental=rentalService.rentACar("Orhan Pamuk",carlist,begin,end);
         System.out.println(rental.toString());
         System.out.println(rental.isRented());
         System.out.println("----------------------------------------------");
@@ -34,9 +37,23 @@ public class Main {
         Connection connection=creditCard.getConnection();
         System.out.println(creditCard.hashCode());
         System.out.println("1: "+connection);
+
+         String config_path[]={"spring-rental.xml","spring-foo.xml","spring-thread.xml"};
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(config_path);
+        RentalService rentalService = applicationContext.getBean("rental_rentalService",RentalService.class);
+        System.out.println("rent service:"+rentalService);
+        List<Car> cars= new ArrayList<Car>();
+        cars.add(new Car("Aston"));
+        cars.add(new Car("Bugatti"));
+        cars.add(new Car("Ford"));
+        Date d1= getDateBegin();
+        Date d2=getDateEnd();
+        Rental rental = rentalService.rentACar(
+                "Jose Saramago", cars,d1,d2
+        );
+        System.out.println("rental :"+rental);
+        System.out.println("rental case: :"+rental.isRented());
         */
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-.xml");
-        RentalService rentalService = applicationContext.getBean("rentalServiceSingletonScope",RentalService.class);
     }
 
     private static Date getDateBegin() throws ParseException {
