@@ -24,7 +24,7 @@
         <property name="datasource" ref="dummyDataSource" />
     </bean>
 
-    <bean id="rentalService" scope="prototype"
+    <bean id="rental_rentalService" scope="prototype"
           class="com.company.rental.RentalServiceImpl" >
         <property name="customerRepository"
                   ref="customerRepository1" />

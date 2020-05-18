@@ -10,12 +10,12 @@
     <bean id="rentalRepository"
           class="com.company.rental.RentalRepositoryImpl" />
 
-    <bean id="fiesta" class="com.company.rental.Car">
+    <bean id="fiesta" class="com.company.pojo.Car">
         <constructor-arg name="brand" value="ford" />
         <constructor-arg name="model" value="fiesta" />
     </bean>
 
-    <bean id="clio" class="com.company.rental.Car">
+    <bean id="clio" class="com.company.pojo.Car">
         <constructor-arg name="brand" value="renualt" />
         <constructor-arg name="model" value="clio" />
     </bean>
@@ -42,11 +42,11 @@
     <bean id="rentalRepository2"
           class="com.company.rental.RentalRepositoryImpl" />
 
-    <bean id="egea" class="com.company.rental.Car">
+    <bean id="egea" class="com.company.pojo.Car">
         <constructor-arg name="brand" value="fiat" />
         <constructor-arg name="model" value="egea" />
     </bean>
-    <bean id="astra" class="com.company.rental.Car">
+    <bean id="astra" class="com.company.pojo.Car">
         <constructor-arg name="brand" value="opel" />
         <constructor-arg name="model" value="astra" />
     </bean>
@@ -62,5 +62,8 @@
             </list>
         </property>
     </bean>
+
+    <bean id="dataSource-foo"
+          class="com.company.rental.DummyDataSourceImpl"/>
 
 </beans>

@@ -24,16 +24,16 @@
     </bean>
 
 
-    <bean id="replacer" class="com.company.util.ToolsClass"/>
+    <bean id="replacer" class="com.rootx.foo.util.ToolsClass"/>
 
-    <bean id="aClass" class="com.company.util.AClass">
+    <bean id="aClass" class="com.rootx.foo.util.AClass">
         <replaced-method name="getTool" replacer="replacer">
             <arg-type>String</arg-type>
         </replaced-method>
     </bean>
 
 
-    <bean id="creditCard"  class="com.company.util.CreditCard"
+    <bean id="creditCard"  class="com.rootx.foo.util.CreditCard"
     factory-method="getCard_instance" />
 
 </beans>
