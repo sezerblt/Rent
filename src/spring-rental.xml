@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="customerRepositoryFactory"
+          class="com.company.factory.CustomerRepositoryFactory" />
+
+    <bean id="customerRepository1"
+          factory-bean="customerRepositoryFactory"
+          factory-method="getNewInstance">
+    </bean>
+
+    <!-- 2-->
+    <bean id="customerRepositoryID"
+          class="com.company.factory.CustomerRepositoryFactoryBean" />
+    <bean id="rentalRepositoryID"
+            class="com.company.rental.RentalRepositoryImpl"></bean>
+
+    <bean id="rentalService"
+          class="com.company.rental.RentalServiceImpl">
+        <property name="customerRepository"
+                  ref="customerRepositoryID" />
+        <property name="rentalRepository"
+                  ref="rentalRepositoryID" />
+    </bean>
+</beans>

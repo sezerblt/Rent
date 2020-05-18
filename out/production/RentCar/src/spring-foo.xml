@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="customerRepository"
+          class="com.company.rental.CustomerRepositoryImpl">
+    </bean>
+    
+    <bean id="rentalRepository"
+          class="com.company.rental.RentalRepositoryImpl" />
+
+    <bean id="fiesta" class="com.company.rental.Car">
+        <constructor-arg name="brand" value="ford" />
+        <constructor-arg name="model" value="fiesta" />
+    </bean>
+
+    <bean id="clio" class="com.company.rental.Car">
+        <constructor-arg name="brand" value="renualt" />
+        <constructor-arg name="model" value="clio" />
+    </bean>
+
+
+    <bean id="rentalServiceSingletonScope" scope="singleton"
+          class="com.company.rental.RentalServiceImpl">
+        <constructor-arg ref="customerRepository" />
+        <constructor-arg ref="rentalRepository" />
+        <property name="carList">
+            <list>
+                <ref bean="fiesta" />
+                <ref bean="clio" />
+            </list>
+        </property>
+    </bean>
+
+
+
+    <bean id="customerRepository2"
+          class="com.company.rental.CustomerRepositoryImpl">
+    </bean>
+
+    <bean id="rentalRepository2"
+          class="com.company.rental.RentalRepositoryImpl" />
+
+    <bean id="egea" class="com.company.rental.Car">
+        <constructor-arg name="brand" value="fiat" />
+        <constructor-arg name="model" value="egea" />
+    </bean>
+    <bean id="astra" class="com.company.rental.Car">
+        <constructor-arg name="brand" value="opel" />
+        <constructor-arg name="model" value="astra" />
+    </bean>
+
+    <bean id="rentalServicePrototypeScope" scope="prototype"
+          class="com.company.rental.RentalServiceImpl">
+        <constructor-arg ref="customerRepository2" />
+        <constructor-arg ref="rentalRepository2" />
+        <property name="carList">
+            <list>
+                <ref bean="egea" />
+                <ref bean="astra" />
+            </list>
+        </property>
+    </bean>
+
+</beans>
