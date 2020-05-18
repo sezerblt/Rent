@@ -63,4 +63,7 @@
         </property>
     </bean>
 
+    <bean id="dataSource-foo"
+          class="com.company.rental.DummyDataSourceImpl"/>
+
 </beans>

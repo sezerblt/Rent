@@ -12,16 +12,25 @@
     </bean>
 
     <!-- 2-->
-    <bean id="customerRepositoryID"
-          class="com.company.factory.CustomerRepositoryFactoryBean" />
-    <bean id="rentalRepositoryID"
-            class="com.company.rental.RentalRepositoryImpl"></bean>
+    <bean id="dummyDataSource"
+          class="com.company.rental.DummyDataSourceImpl"/>
 
-    <bean id="rentalService"
-          class="com.company.rental.RentalServiceImpl">
+    <bean id="customerRepository"
+          class="com.company.rental.RentalRepositoryImpl" >
+        <property name="datasource" ref="dataSource-foo" />
+    </bean>
+    <bean id="rentalRepositoryID"
+            class="com.company.rental.RentalRepositoryImpl">
+        <property name="datasource" ref="dummyDataSource" />
+    </bean>
+
+    <bean id="rentalService" scope="prototype"
+          class="com.company.rental.RentalServiceImpl" >
         <property name="customerRepository"
-                  ref="customerRepositoryID" />
+                  ref="customerRepository1" />
         <property name="rentalRepository"
                   ref="rentalRepositoryID" />
     </bean>
+
+
 </beans>
