@@ -3,4 +3,23 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--
+    <bean id="rentalService1"
+          class="com.company.rental.RentalServiceImpl"
+          scope="prototype">
+        <property name="customerRepository"
+                  ref="customerRepository1"/>
+        <property name="rentalRepository"
+                  ref="rentalRepository1" />
+    </bean>
+
+    <bean id="rentalRepository1"
+          class="com.company.rental.RentalRepositoryImpl">
+        <property name="datasource" ref="datasource1" />
+    </bean>
+    <bean id="customerRepository1"
+          class="com.company.rental.CustomerRepositoryImpl">
+        <property name="datasource" ref="datasource1" />
+    </bean>
+    -->
 </beans>

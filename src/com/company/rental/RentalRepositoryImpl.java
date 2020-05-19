@@ -1,11 +1,12 @@
 package com.company.rental;
 
+import com.company.dao.MysqlDatasourceImpl;
 import com.company.service.RentalRepository;
 import org.springframework.orm.jpa.vendor.Database;
 
 public class RentalRepositoryImpl implements RentalRepository {
 
-    private DummyDataSourceImpl datasource;
+    private MysqlDatasourceImpl datasource;
 
     public RentalRepositoryImpl() {
     }
@@ -14,11 +15,11 @@ public class RentalRepositoryImpl implements RentalRepository {
 
     }
 
-    public DummyDataSourceImpl getDatasource() {
+    public MysqlDatasourceImpl getDatasource() {
         return datasource;
     }
 
-    public void setDatasource(DummyDataSourceImpl datasource) {
+    public void setDatasource(MysqlDatasourceImpl datasource) {
         this.datasource = datasource;
     }
 }

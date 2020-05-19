@@ -31,6 +31,36 @@
           <file>file://$MODULE_DIR$/src/spring-thread.xml</file>
           <file>file://$MODULE_DIR$/src/com/rootx/foo/Application.java</file>
         </fileset>
+        <fileset id="fileset4" name="Spring Pojo" removed="false">
+          <file>file://$MODULE_DIR$/src/config-xml/spring-pojo.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-foo.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-rental.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-thread.xml</file>
+          <file>file://$MODULE_DIR$/src/com/rootx/foo/Application.java</file>
+        </fileset>
+        <fileset id="fileset5" name="Spring Service" removed="false">
+          <file>file://$MODULE_DIR$/src/config-xml/spring-service.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-foo.xml</file>
+          <file>file://$MODULE_DIR$/src/config-xml/spring-pojo.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-rental.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-thread.xml</file>
+          <file>file://$MODULE_DIR$/src/com/rootx/foo/Application.java</file>
+        </fileset>
+        <fileset id="fileset6" name="Spring Dao" removed="false">
+          <file>file://$MODULE_DIR$/src/config-xml/spring-dao.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-foo.xml</file>
+          <file>file://$MODULE_DIR$/src/config-xml/spring-pojo.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-rental.xml</file>
+          <file>file://$MODULE_DIR$/src/config-xml/spring-service.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-thread.xml</file>
+          <file>file://$MODULE_DIR$/src/com/rootx/foo/Application.java</file>
+        </fileset>
+        <fileset id="fileset7" name="Spring Factory" removed="false">
+          <file>file://$MODULE_DIR$/src/spring-xml/spring-factory.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-xml/spring-dao.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-xml/spring-pojo.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-xml/spring-service.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>

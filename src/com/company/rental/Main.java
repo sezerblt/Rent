@@ -14,10 +14,21 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws ParseException {
+        String config_path[]={"spring-xml/spring-pojo.xml","spring-xml/spring-dao.xml","spring-xml/spring-service.xml"};
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-xml/spring-pojo.xml",
+                "spring-xml/spring-dao.xml","spring-xml/spring-service.xml");
+        Car car = applicationContext.getBean("car1",Car.class);
+        System.out.println("mycar: "+car.getBrand()+"-"+car.getModel());
+        ((ClassPathXmlApplicationContext)applicationContext).close();
         /*
+        Car car = applicationContext.getBean("car1",Car.class);
+        System.out.println("mycar: "+car.getBrand()+"-"+car.getModel());
+        ((ClassPathXmlApplicationContext)applicationContext).close();
+        ______________________________________________________________________________________
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-foo.xml");
         RentalService rentalService = applicationContext.getBean("rentalServiceSingletonScope",RentalService.class);
         List<Car> carlist=new ArrayList<Car>();
+
         Car car1 = new Car("fiesta");
         Date begin=Main.getDateBegin();
         Date end=Main.getDateEnd();

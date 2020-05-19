@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder
+            location="classpath:mysqldb.properties" />
+
+    <bean id="customerRepository1"
+          class="com.company.rental.CustomerRepositoryImpl">
+        <property name="datasource" ref="datasource2" />
+    </bean>
+
+    <bean id="datasource2"
+          class="com.company.dao.MysqlDatasourceImpl">
+        <property name="url" value="${datasource.url}"></property>
+        <property name="user" value="${datasource.user}"></property>
+        <property name="password" value="${datasource.pwd}"></property>
+    </bean>
+    <!--
+    <bean id="rentalService1"
+          class="com.company.rental.RentalServiceImpl"
+          scope="prototype">
+        <property name="customerRepository"
+                  ref="customerRepository1"/>
+        <property name="rentalRepository"
+                  ref="rentalRepository1" />
+    </bean>
+
+    <bean id="rentalRepository1"
+          class="com.company.rental.RentalRepositoryImpl">
+        <property name="datasource" ref="datasource1" />
+    </bean>
+    <bean id="customerRepository1"
+          class="com.company.rental.CustomerRepositoryImpl">
+        <property name="datasource" ref="datasource1" />
+    </bean>
+    -->
+
 
 </beans>
