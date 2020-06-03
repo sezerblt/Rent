@@ -4,9 +4,11 @@ import com.company.dao.MysqlDatasourceImpl;
 import com.company.service.RentalRepository;
 import org.springframework.orm.jpa.vendor.Database;
 
+import javax.annotation.PostConstruct;
+
 public class RentalRepositoryImpl implements RentalRepository {
 
-    private MysqlDatasourceImpl datasource;
+    //private MysqlDatasourceImpl datasource;
 
     public RentalRepositoryImpl() {
     }
@@ -15,11 +17,16 @@ public class RentalRepositoryImpl implements RentalRepository {
 
     }
 
+    /*
     public MysqlDatasourceImpl getDatasource() {
         return datasource;
     }
 
     public void setDatasource(MysqlDatasourceImpl datasource) {
         this.datasource = datasource;
+    }
+*/
+    @PostConstruct
+    public void init() {
     }
 }

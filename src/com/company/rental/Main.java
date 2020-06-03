@@ -1,5 +1,6 @@
 package com.company.rental;
 
+import com.company.dao.MysqlDatasourceImpl;
 import com.company.pojo.Car;
 import com.company.service.RentalService;
 import org.springframework.context.ApplicationContext;
@@ -15,12 +16,20 @@ public class Main {
 
     public static void main(String[] args) throws ParseException {
         String config_path[]={"spring-xml/spring-pojo.xml","spring-xml/spring-dao.xml","spring-xml/spring-service.xml"};
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-xml/spring-pojo.xml",
-                "spring-xml/spring-dao.xml","spring-xml/spring-service.xml");
-        Car car = applicationContext.getBean("car1",Car.class);
-        System.out.println("mycar: "+car.getBrand()+"-"+car.getModel());
+        ApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("spring-xml/spring-factory.xml");
+
+        Car car = applicationContext.getBean("car2",Car.class);
+        MysqlDatasourceImpl mysqlDatasource=applicationContext.getBean("mysqlDataSource",MysqlDatasourceImpl.class);
+
+        System.out.println(car.getModel()+"-"+car.getBrand()+"- "+car.getLicensePlate()+" -"+car.getType()+"-"+car.getYearModel());
+        System.out.println("MYSQL: "+mysqlDatasource);
+        System.out.println("MYSQL URL: "+mysqlDatasource.getDbConfiguration().getProperty("datasource.url"));
         ((ClassPathXmlApplicationContext)applicationContext).close();
         /*
+        RentalService service =applicationContext.getBean("rentalService1",RentalServiceImpl.class);
+        Car car = applicationContext.getBean("car1",Car.class);
+        System.out.println("mycar: "+car.getBrand()+"-"+car.getModel());
         Car car = applicationContext.getBean("car1",Car.class);
         System.out.println("mycar: "+car.getBrand()+"-"+car.getModel());
         ((ClassPathXmlApplicationContext)applicationContext).close();

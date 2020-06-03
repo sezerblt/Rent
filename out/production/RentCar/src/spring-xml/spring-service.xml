@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:c="http://www.springframework.org/schema/c"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <bean id="rental_service1" class="com.company.rental.RentalServiceImpl">
+        <property name="customerRepository"
+                  ref="customerRepository1"/>
+        <property name="rentalRepository"
+                  ref="rentalRepository1" />
+    </bean>
+
 
     <!--
+
+    <context:annotation-config/>
+
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+
+    <context:property-placeholder
+            location="classpath:mysqldb.properties" />
+     <bean id="customerRepository2"
+          class="com.company.rental.CustomerRepositoryImpl">
+        <property name="datasource" ref="datasource2" />
+    </bean>
+    <bean id="rentalRepository2"
+          class="com.company.rental.RentalRepositoryImpl">
+        <property name="datasource" ref="datasource2"></property>
+    </bean>
+
+
+
+    <bean id="rentalService1"
+          class="com.company.rental.RentalServiceImpl"
+          scope="prototype" destroy-method="releaseResources">
+        <property name="customerRepository"
+                  ref="customerRepository2"/>
+        <property name="rentalRepository"
+                  ref="rentalRepository2" />
+    </bean>
+
+    <bean id="datasource2"
+          class="com.company.dao.MysqlDatasourceImpl">
+        <property name="url" value="${datasource.url}"></property>
+        <property name="user" value="${datasource.user}"></property>
+        <property name="password" value="${datasource.pwd}"></property>
+    </bean>
+
+    <bean
+            class="org.springframework.beans.factory.annotation.
+RequiredAnnotationBeanPostProcessor"/>
     <bean id="rentalService1"
           class="com.company.rental.RentalServiceImpl"
           scope="prototype">
@@ -22,4 +73,6 @@
         <property name="datasource" ref="datasource1" />
     </bean>
     -->
+
+
 </beans>

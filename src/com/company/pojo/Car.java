@@ -2,12 +2,19 @@ package com.company.pojo;
 
 public class Car {
 
+    public static enum CarTypeEnum {
+        TRADE, CAR, SPORT
+    }
+
     private int carNo;
     private String brand; //marka
     private String model; //model
     private String licensePlate;//plaka
     private int yearModel; //cikis yili
-    private int numberModel; //modelNo
+    private CarTypeEnum type;
+
+    public Car() {
+    }
 
     public Car(String model) {
         this.model = model;
@@ -58,11 +65,11 @@ public class Car {
         this.yearModel = yearModel;
     }
 
-    public int getNumberModel() {
-        return numberModel;
+    public CarTypeEnum getType() {
+        return type;
     }
 
-    public void setNumberModel(int numberModel) {
-        this.numberModel = numberModel;
+    public void setType(CarTypeEnum type) {
+        this.type = type;
     }
 }

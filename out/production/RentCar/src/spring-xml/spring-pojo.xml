@@ -3,8 +3,45 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="car1" class="com.company.pojo.Car">
+    <bean id="car_type_car" class="com.company.pojo.Car" abstract="true">
+        <property name="type" value="CAR"/>
+    </bean>
+    <bean id="car_type_trade" class="com.company.pojo.Car" abstract="true">
+        <property name="type" value="TRADE"/>
+    </bean>
+    <bean id="car_type_sport" class="com.company.pojo.Car" abstract="true">
+        <property name="type" value="SPORT"/>
+    </bean>
+
+    <bean id="car1" class="com.company.pojo.Car" parent="car_type_car">
         <constructor-arg name="brand" value="Ford"></constructor-arg>
         <constructor-arg name="model" value="Fiesta"></constructor-arg>
+        <!-- <property name="type" value="CAR"/> -->
     </bean>
+
+    <bean id="car2" class="com.company.pojo.Car" parent="car_type_car">
+        <property name="brand" value="Opel"></property>
+        <property name="model" value="Astra"></property>
+        <property name="licensePlate" value="34 FB 1907"></property>
+        <property name="yearModel" value="2012"></property>
+        <!--
+        parent="car1 == <property name="type" value="CAR"></property>
+        -->
+    </bean>
+    <bean id="car3" class="com.company.pojo.Car" parent="car_type_trade">
+        <property name="brand" value="Fiat"></property>
+        <property name="model" value="Egea"></property>
+        <property name="licensePlate" value="34 TC 1923"></property>
+        <property name="yearModel" value="2017"></property>
+        <!--
+        parent == <property name="type" value="CAR"></property>
+        -->
+    </bean>
+    <bean id="car4" class="com.company.pojo.Car">
+        <property name="brand" value="Ferrari"></property>
+        <property name="model" value="FX-8"></property>
+        <property name="licensePlate" value="07 BB 1120"></property>
+        <property name="yearModel" value="2009"></property>
+    </bean>
+
 </beans>

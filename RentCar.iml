@@ -61,6 +61,14 @@
           <file>file://$MODULE_DIR$/src/spring-xml/spring-pojo.xml</file>
           <file>file://$MODULE_DIR$/src/spring-xml/spring-service.xml</file>
         </fileset>
+        <fileset id="fileset8" name="Spring Repository" removed="false">
+          <file>file://$MODULE_DIR$/src/spring-xml/spring-repository.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-xml/spring-dao.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-xml/spring-factory.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-xml/spring-pojo.xml</file>
+          <file>file://$MODULE_DIR$/src/spring-xml/spring-service.xml</file>
+          <file>file://$MODULE_DIR$/src/com/rootx/foo/Application.java</file>
+        </fileset>
       </configuration>
     </facet>
   </component>

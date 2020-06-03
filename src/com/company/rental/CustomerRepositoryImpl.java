@@ -7,7 +7,7 @@ import org.springframework.orm.jpa.vendor.Database;
 
 //XXXrepository sınıfın verilerinden sorumlu olan sınıftır.
 public class CustomerRepositoryImpl implements CustomerRepository {
-    private MysqlDatasourceImpl datasource;
+    //private MysqlDatasourceImpl datasource;
     private int port;
 
     public void save(Customer customer) {
@@ -18,11 +18,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return new Customer(customerName);
     }
 
+    /*
     public MysqlDatasourceImpl getDatasource() {
         return datasource;
     }
 
     public void setDatasource(MysqlDatasourceImpl datasource) {
         this.datasource = datasource;
-    }
+    }*/
 }
