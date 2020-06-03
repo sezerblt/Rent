@@ -4,11 +4,13 @@ import com.company.dao.MysqlDatasourceImpl;
 import com.company.pojo.Customer;
 import com.company.service.CustomerRepository;
 import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.stereotype.Component;
 
 //XXXrepository sınıfın verilerinden sorumlu olan sınıftır.
+@Component("customerRepository")
 public class CustomerRepositoryImpl implements CustomerRepository {
     //private MysqlDatasourceImpl datasource;
-    private int port;
+    //private int port;
 
     public void save(Customer customer) {
     }

@@ -2,18 +2,28 @@ package com.company.rental;
 
 import com.company.pojo.Car;
 import com.company.pojo.Customer;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class Rental {
-    public List<Car> car;
+    public List<Car> carList;
     public Customer customer;
+    public Car car;
+    public List<Car> getCarList() {
+        return carList;
+    }
 
-    public List<Car> getCar() {
+    public void setCarList(List<Car> carList) {
+        this.carList = carList;
+    }
+
+    public Car getCar() {
         return car;
     }
 
-    public void setCar(List<Car> car) {
+    public void setCar(Car car) {
         this.car = car;
     }
 
@@ -32,7 +42,7 @@ public class Rental {
     @Override
     public String toString() {
         return "Rental {\n" +
-                "  car=" + car.getClass().getSimpleName() +
+                "  car=" + carList.getClass().getSimpleName() +
                 ",  customer=" + customer.getClass()+"-"+customer.getCustomerName() +
                 '\n'+' '+'}';
     }

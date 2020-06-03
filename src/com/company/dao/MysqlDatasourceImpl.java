@@ -1,5 +1,8 @@
 package com.company.dao;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import javax.sql.DataSource;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -8,6 +11,8 @@ import java.sql.SQLFeatureNotSupportedException;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+@Component
+@Qualifier("mysql")
 public class MysqlDatasourceImpl implements DataSource {
 
     private Properties dbConfiguration;

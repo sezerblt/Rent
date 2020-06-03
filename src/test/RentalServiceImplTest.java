@@ -32,7 +32,7 @@ public class RentalServiceImplTest {
         Date rentalEnd = new Date(2020,05,10);
         //rentalEnd.parse("29/12/2013");
         //Kiralama icin kiralama servisinden Kiralama nesnei dondur
-        Rental rental = rentalService.rentACar("SEZER BALTA",car,rentalBegin,rentalEnd);
+        Rental rental = rentalService.rentACar("SEZER BALTA",new Car(),rentalBegin,rentalEnd);
         assertTrue(rental.isRented());
         System.out.println("sonuc: "+":"+rental.isRented());
 

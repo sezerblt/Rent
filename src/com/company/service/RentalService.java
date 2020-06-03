@@ -7,6 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface RentalService {
-    public Rental rentACar(String customerName, List<Car> carList, Date begin, Date end);
+    public Rental rentACarToList(String customerName, List<Car> carList, Date begin, Date end);
     public Rental rentACar(String customerName, Car car, Date begin, Date end);
 }

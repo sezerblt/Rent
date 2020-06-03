@@ -6,26 +6,30 @@ import com.company.service.CustomerRepository;
 import com.company.service.RentalRepository;
 import com.company.service.RentalService;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-
-
+import org.springframework.stereotype.Component;
 import javax.annotation.PreDestroy;
 import java.lang.reflect.Proxy;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
+@Component("rentalService")
 public class RentalServiceImpl implements RentalService, BeanPostProcessor {
 
+    @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
     private RentalRepository rentalRepository;
-    private Properties carProperties;
+
+    //private Properties carProperties;
     //private List<Car> carList;
 
     public RentalServiceImpl() {
     }
 
+    @Autowired
     public RentalServiceImpl(CustomerRepository customerRepository,RentalRepository rentalRepository) {
         super();
         this.customerRepository = customerRepository;
@@ -41,11 +45,34 @@ public class RentalServiceImpl implements RentalService, BeanPostProcessor {
     public void destroyRentalService(){
         System.out.println("-------------------------");
         System.out.println("!!!End RentalService!!!");
-    }*/
+    }
+
+    @Autowired
+    public void injectRentalRepository(
+            RentalRepository repo) {
+        this.rentalRepository = repo;
+    }
+    @Autowired
+    public void injectCustomerRepository(
+            CustomerRepository repo) {
+        this.customerRepository = repo;
+    }
+
+     */
 
     @Override
-    public Rental rentACar(String customerName, List<Car> carList, Date begin, Date end) {
-        return null;
+    public Rental rentACarToList(String customerName, List<Car> carList, Date begin, Date end) {
+        Customer customer = customerRepository.getCustomerByName(customerName);
+        if (customer == null) {
+            customer = new Customer(customerName);
+            customerRepository.save(customer);
+        }
+
+        Rental rental = new Rental();
+        rental.setCarList(carList);
+        rental.setCustomer(customer);
+        rentalRepository.save(rental);
+        return rental;
     }
 
     @Override
@@ -57,7 +84,7 @@ public class RentalServiceImpl implements RentalService, BeanPostProcessor {
         }
 
         Rental rental = new Rental();
-        rental.setCar((List<Car>) car);
+        rental.setCar(car);
         rental.setCustomer(customer);
         rentalRepository.save(rental);
         return rental;
@@ -79,15 +106,18 @@ public class RentalServiceImpl implements RentalService, BeanPostProcessor {
         rental.setCustomer(customer);
         rentalRepository.save(rental);
         return rental;
-    }*/
-
-    public Properties getCarProperties() {
+    }*
+     public Properties getCarProperties() {
         return carProperties;
     }
 
     public void setCarProperties(Properties carProperties) {
         this.carProperties = carProperties;
     }
+
+     */
+
+
 
     public CustomerRepository getCustomerRepository() {
         return customerRepository;
@@ -140,11 +170,10 @@ public class RentalServiceImpl implements RentalService, BeanPostProcessor {
         return bean;
     }
 
+    /*
     @PreDestroy
     private void releaseResources() {
         System.out.println("pre-destroy: releaseResources called");
-        /*for xml
-        * <beans default-destroy-method="releaseResources">
-        * */
-    }
+
+    }*/
 }
